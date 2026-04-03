@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic PDF Translator</title>
+    <link rel="stylesheet" href="../node_modules/pdfjs-dist/web/pdf_viewer.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div id="brandTitle" class="brand-title">学术 PDF 智能翻译</div>
+        <div id="fileMeta" class="muted">未加载 PDF（悬停英文词可翻译）</div>
+      </div>
+      <div class="toolbar">
+        <button id="openPdfBtn" class="primary" type="button">打开 PDF</button>
+        <label class="toolbar-label" for="pagerPositionSelect">翻页键位置</label>
+        <select id="pagerPositionSelect">
+          <option value="bottom-right" selected>右下角</option>
+          <option value="bottom-left">左下角</option>
+          <option value="top-right">右上角</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-panel">
+        <div class="viewer-toolbar">
+          <div class="zoom-controls">
+            <button id="zoomOutBtn" type="button" aria-label="缩小">-</button>
+            <span id="zoomIndicator" class="scale-label">125%</span>
+            <button id="zoomInBtn" type="button" aria-label="放大">+</button>
+          </div>
+        </div>
+        <div id="viewerContainer" class="viewer-container">
+          <div id="pageHost" class="page-host"></div>
+          <div id="hoverTooltip" class="hover-tooltip hidden"></div>
+          <div id="floatingPager" class="floating-pager">
+            <button id="prevPageBtn" type="button">上一页</button>
+            <span id="pageIndicator">第 -- / -- 页</span>
+            <button id="nextPageBtn" type="button">下一页</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="statusBar" class="status-bar">准备就绪。打开 PDF 后，将鼠标悬停在英文词语上即可翻译。</footer>
+
+    <script src="renderer.js" type="module"></script>
+  </body>
+</html>
